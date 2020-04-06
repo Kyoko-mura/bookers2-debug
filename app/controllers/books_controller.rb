@@ -6,13 +6,15 @@ class BooksController < ApplicationController
     @newbook = Book.new
     @user = User.find(current_user.id)
     @author = User.find(@book.user_id)
+    @post_comment = PostComment.new
   end
 
   def index
   	@books = Book.all #一覧表示するためにBookモデルの情報を全てくださいのall
-        @book = Book.new
-      @user = User.find(current_user.id)
-      @users = User.all
+    @book = Book.new
+    @user = User.find(current_user.id)
+    @users = User.all
+
   end
 
   def create
