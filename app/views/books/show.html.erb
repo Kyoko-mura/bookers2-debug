@@ -64,7 +64,19 @@
                 </div>
             </div>
         </td>
+		<% if post_comment.user_id == current_user.id %>
+		      <%= link_to "削除",book_post_comments_path(@book), method: :delete %>
+		<% end %>
+
     	<% end %>
+    	  <% if @post_comment.errors.any? %>
+		    <h2><%= @post_comment.errors.count %>errors prohibited this obj from being saved:</h2>
+			  <ul>
+			  <% @post_comment.errors.full_messages.each do |message| %>
+			    <li><%= message %></li>
+			  <% end %>
+			  </ul>
+		  <% end %>
 		<%= form_for [@book, @post_comment] do |f| %>
 		    <div class="row">
 		        <div class="col-sm-12">
